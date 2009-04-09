@@ -16,6 +16,14 @@
     </content>
     <orderEntry type="jdk" jdkName="Ruby SDK 1.8.6" jdkType="RUBY_SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="[gem] mocha (v0.9.5, /Users/gary/.gem/ruby/1.8/gems/mocha-0.9.5)" level="application" />
+    <orderEntry type="library" name="[gem] tagz (v5.0.1, /Library/Ruby/Gems/1.8/gems/tagz-5.0.1)" level="application" />
+    <orderEntry type="library" name="[gem] rake (v0.8.3, /Library/Ruby/Gems/1.8/gems/rake-0.8.3)" level="application" />
+    <orderEntry type="library" name="[gem] rest-client (v0.9.2, /Library/Ruby/Gems/1.8/gems/rest-client-0.9.2)" level="application" />
+    <orderEntry type="library" name="[gem] gnip (v1.0.0, /Library/Ruby/Gems/1.8/gems/gnip-1.0.0)" level="application" />
+    <orderEntry type="library" name="[gem] threadify (v0.0.3, /Library/Ruby/Gems/1.8/gems/threadify-0.0.3)" level="application" />
+    <orderEntry type="library" name="[gem] nokogiri (v1.2.3, /Library/Ruby/Gems/1.8/gems/nokogiri-1.2.3)" level="application" />
+    <orderEntry type="library" name="[gem] thoughtbot-shoulda (v2.10.1, /Users/gary/.gem/ruby/1.8/gems/thoughtbot-shoulda-2.10.1)" level="application" />
   </component>
   <component name="RModuleContentRootManager">
     <TEST_URLS url="file://$MODULE_DIR$/test" />
