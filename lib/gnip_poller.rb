@@ -2,9 +2,22 @@ require 'gnip'
 
 # A daemon that pools gnip periodically to retrieve TweetInfos across all twitter users.
 # TODO deamonize
+
+# The gnip gem is broken. There is no way to set a different config than the one
+# it expects in the home directory. Fix that here.
+module Gnip
+  class Config
+    def Config.default_path
+      File.join("#{RAILS_ROOT}/config", 'gnip.yml')
+    end
+  end
+end
+
+
 class GnipPoller
 
   def run
+    
     pub = Gnip.publisher.for('twitter')
     attempts = 0
 
