@@ -2,12 +2,15 @@ class CreateTweetInfos < ActiveRecord::Migration
   def self.up
     create_table :tweet_infos do |t|
       t.column 'uid', :integer
-      t.column 'reply_to_uid', :integer
+      t.column 'in_reply_to', :string, :limit => 20
       t.column 'posted_at', :datetime
     end
 
-    add_index(:tweet_infos, [:uid, :posted_at])
-    add_index(:tweet_infos, [:reply_to_uid, :posted_at])
+    # No need for an artificial primary key. Keep this thing light, there will be lots of rows.
+    remove_column :tweet_infos, :id
+
+    add_index(:tweet_infos, [:uid, :posted_at], :unique => true)
+    add_index(:tweet_infos, [:in_reply_to, :posted_at])
   end
 
   def self.down
