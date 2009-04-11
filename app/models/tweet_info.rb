@@ -18,4 +18,9 @@ class TweetInfo < ActiveRecord::Base
     # TODO caching
     count(:conditions => ["uid=? and in_reply_to is not null and posted_at >= ? and posted_at <= ?", uid, from, to])
   end
+
+  def TweetInfo.delete_old_data(from_days = 8)
+    from = Date.today - from_days
+    delete(:conditions => ["posted_at < ?", from])
+  end
 end
