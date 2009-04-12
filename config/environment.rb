@@ -21,6 +21,7 @@ Rails::Initializer.run do |config|
   config.gem "gnip", :lib => "gnip"
   config.gem "geokit"
   config.gem "daemons"
+  config.gem "twitter"
   
   # config.gem "hpricot", :version => '0.6', :source => "http://code.whytheluckystiff.net"
   # config.gem "sqlite3-ruby", :lib => "sqlite3"
