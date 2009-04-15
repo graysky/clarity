@@ -49,7 +49,7 @@ class GnipPoller
             info = TweetInfo.new(:uid => act.actors.first.uid, :posted_at => act.at)
 
             if act.tos && act.tos.length > 0
-              info.in_reply_to = act.tos.first.content[0..20]
+              info.in_reply_to = act.tos.first.content[0..20].downcase
             end
 
             # Save it, but don't sweat it if it fails

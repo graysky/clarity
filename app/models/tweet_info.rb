@@ -19,6 +19,13 @@ class TweetInfo < ActiveRecord::Base
     count(:conditions => ["uid=? and in_reply_to is not null and posted_at >= ? and posted_at <= ?", uid, from, to])
   end
 
+  def TweetInfo.replies_to_per_day(screen_name, from_days = 7)
+    to = Date.today - 1
+    from = Date.today - from_days
+
+    count(:conditions => ["in_reply_to = ? and posted_at >= ? and posted_at <= ?", screen_name.downcase, from, to])
+  end
+
   def TweetInfo.delete_old_data(from_days = 8)
     from = Date.today - from_days
     delete(:conditions => ["posted_at < ?", from])
