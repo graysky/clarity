@@ -3,6 +3,7 @@ class CreateRetweetInfos < ActiveRecord::Migration
     create_table :retweet_infos do |t|
       t.column 'retweeter_uid', :integer
       t.column 'retweeted', :string, :limit => 20
+      t.column 'tweet_id', :integer
       t.column 'posted_at', :datetime   
     end
 
@@ -10,6 +11,7 @@ class CreateRetweetInfos < ActiveRecord::Migration
 
     add_index :retweet_infos, [:retweeter_uid, :posted_at], :unique => true
     add_index :retweet_infos, [:retweeted, :posted_at]
+    add_index :retweet_infos, [:tweet_id, :posted_at]
   end
 
   def self.down

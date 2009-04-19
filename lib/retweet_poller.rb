@@ -38,6 +38,7 @@ class RetweetPoller
           info.retweeter_uid = result.from_user_id
           info.retweeted = retweeted
           info.posted_at = result.created_at
+          info.tweet_id = result.id
           info.save rescue nil
         end
 
