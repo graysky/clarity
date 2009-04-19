@@ -7,23 +7,24 @@ class TweetInfo < ActiveRecord::Base
     to = Date.today - 1.second
     from = Date.today - from_days
 
-    # TODO caching
-    count(:conditions => ["uid=? and posted_at >= ? and posted_at <= ?", uid, from, to])
+    total = count(:conditions => ["uid=? and posted_at >= ? and posted_at <= ?", uid, from, to])
+    ((total / from_days.to_f) * 100).to_i
   end
 
   def TweetInfo.replies_per_day(uid, from_days = 7)
     to = Date.today - 1.second
     from = Date.today - from_days
 
-    # TODO caching
-    count(:conditions => ["uid=? and in_reply_to is not null and posted_at >= ? and posted_at <= ?", uid, from, to])
+    total = count(:conditions => ["uid=? and in_reply_to is not null and posted_at >= ? and posted_at <= ?", uid, from, to])
+    ((total / from_days.to_f) * 100).to_i
   end
 
   def TweetInfo.replies_to_per_day(screen_name, from_days = 7)
     to = Date.today - 1.second
     from = Date.today - from_days
 
-    count(:conditions => ["in_reply_to = ? and posted_at >= ? and posted_at <= ?", screen_name.downcase, from, to])
+    total = count(:conditions => ["in_reply_to = ? and posted_at >= ? and posted_at <= ?", screen_name.downcase, from, to])
+    ((total / from_days.to_f) * 100).to_i
   end
 
   def TweetInfo.delete_old_data(from_days = 8)

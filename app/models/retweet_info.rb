@@ -5,14 +5,16 @@ class RetweetInfo < ActiveRecord::Base
     to = Date.today - 1.second
     from = Date.today - from_days
 
-    count(:conditions => ["retweeted=? and posted_at >= ? and posted_at <= ?", username, from, to])
+    total = count(:conditions => ["retweeted=? and posted_at >= ? and posted_at <= ?", username, from, to])
+    ((total / from_days.to_f) * 100).to_i
   end
 
   def RetweetInfo.retweets_per_day(uid, from_days = 7)
     to = Date.today - 1.second
     from = Date.today - from_days
 
-    count(:conditions => ["retweeter_uid=? and posted_at >= ? and posted_at <= ?", uid, from, to])
+    total = count(:conditions => ["retweeter_uid=? and posted_at >= ? and posted_at <= ?", uid, from, to])
+    ((total / from_days.to_f) * 100).to_i
   end
 
   # Returns the username of the retweeted user if it is a valid retweet.
