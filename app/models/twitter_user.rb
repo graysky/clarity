@@ -59,6 +59,8 @@ class TwitterUser < ActiveRecord::Base
     stats.tweets_per_day = TweetInfo.tweets_per_day(user_info.id)
     stats.replies_per_day = TweetInfo.replies_per_day(user_info.id)
     stats.replies_to_per_day = TweetInfo.replies_to_per_day(user_info.screen_name)
+    stats.retweeted_per_day = RetweetInfo.retweeted_per_day(user_info.screen_name)
+    stats.retweets_per_day = RetweetInfo.retweets_per_day(user_info.id)
 
     # todo other stats/classification
     stats.save!

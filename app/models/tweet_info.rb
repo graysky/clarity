@@ -4,7 +4,7 @@ class TweetInfo < ActiveRecord::Base
 
   # Calculate the tweets per day for the given uid
   def TweetInfo.tweets_per_day(uid, from_days = 7)
-    to = Date.today - 1
+    to = Date.today - 1.second
     from = Date.today - from_days
 
     # TODO caching
@@ -12,7 +12,7 @@ class TweetInfo < ActiveRecord::Base
   end
 
   def TweetInfo.replies_per_day(uid, from_days = 7)
-    to = Date.today - 1
+    to = Date.today - 1.second
     from = Date.today - from_days
 
     # TODO caching
@@ -20,7 +20,7 @@ class TweetInfo < ActiveRecord::Base
   end
 
   def TweetInfo.replies_to_per_day(screen_name, from_days = 7)
-    to = Date.today - 1
+    to = Date.today - 1.second
     from = Date.today - from_days
 
     count(:conditions => ["in_reply_to = ? and posted_at >= ? and posted_at <= ?", screen_name.downcase, from, to])

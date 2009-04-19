@@ -1,5 +1,20 @@
 class RetweetInfo < ActiveRecord::Base
 
+  # TODO What about timezones? Everything in UTC?
+  def RetweetInfo.retweeted_per_day(username, from_days = 7)
+    to = Date.today - 1.second
+    from = Date.today - from_days
+
+    count(:conditions => ["retweeted=? and posted_at >= ? and posted_at <= ?", username, from, to])
+  end
+
+  def RetweetInfo.retweets_per_day(uid, from_days = 7)
+    to = Date.today - 1.second
+    from = Date.today - from_days
+
+    count(:conditions => ["retweeter_uid=? and posted_at >= ? and posted_at <= ?", uid, from, to])
+  end
+
   # Returns the username of the retweeted user if it is a valid retweet.
   # Otherwise returns nil.
   def RetweetInfo.get_retweeted_from_msg(msg)
