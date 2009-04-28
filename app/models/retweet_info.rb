@@ -9,11 +9,11 @@ class RetweetInfo < ActiveRecord::Base
     ((total / from_days.to_f) * 100).to_i
   end
 
-  def RetweetInfo.retweets_per_day(uid, from_days = 7)
+  def RetweetInfo.retweets_per_day(retweeter, from_days = 7)
     to = Date.today - 1.second
     from = Date.today - from_days
 
-    total = count(:conditions => ["retweeter_uid=? and posted_at >= ? and posted_at <= ?", uid, from, to])
+    total = count(:conditions => ["retweeter=? and posted_at >= ? and posted_at <= ?", retweeter, from, to])
     ((total / from_days.to_f) * 100).to_i
   end
 
