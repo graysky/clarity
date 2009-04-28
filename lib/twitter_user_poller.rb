@@ -39,6 +39,4 @@ class TwitterUserPoller
 
 end
 
-TwitterUserPoller.new.run
-
 

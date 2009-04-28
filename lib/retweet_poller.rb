@@ -2,7 +2,6 @@ require 'twitter'
 
 # A deamon that polls twitter search for tweets that are likely to be retweets.
 # Does not currently pick up where it left off after restarting.
-# TODO deamonize
 
 class RetweetPoller
 
@@ -53,5 +52,3 @@ class RetweetPoller
   end
 
 end
-
-RetweetPoller.new.run
